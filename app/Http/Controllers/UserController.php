@@ -45,6 +45,12 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
 
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')), // Hash the password
+        ]);
+
         Session::flash('message', 'Successfully created user!');
         return Redirect::to('users');
     }
@@ -58,8 +64,12 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+     $user = User::find($id);
+    if (!$user) {
+        // Log or handle the case where the user is not found
+        return redirect()->route('users.index')->withErrors('User  not found.');
+    }
+    return view('user.edit', compact('user'));
     }
 
 
