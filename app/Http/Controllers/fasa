@@ -1,0 +1,41 @@
+<?php
+
+// Import necessary classes
+use Illuminate\Support\Facades\Route; // This is used to define routes in Laravel
+use App\Http\Controllers\UserController; // Import the UserController to handle user-related actions
+
+// Define a route for displaying all users
+Route::get('/users', [User Controller::class, 'index'])->name('users.index');
+// This route responds to GET requests at the '/users' URL and calls the 'index' method of the UserController.
+// It is named 'users.index' for easy reference in the application.
+
+// Define a route for displaying the user creation form
+Route::get('/users/create', [User Controller::class, 'create'])->name('users.create');
+// This route responds to GET requests at the '/users/create' URL and calls the 'create' method of the UserController.
+// It is named 'users.create' for easy reference in the application.
+
+// Define a route for storing a new user
+Route::post('/users', [User Controller::class, 'store'])->name('users.store');
+// This route responds to POST requests at the '/users' URL and calls the 'store' method of the UserController.
+// It is named 'users.store' for easy reference in the application.
+
+// Define a route for displaying a specific user
+Route::get('/users/{id}', [User Controller::class, 'show'])->name('users.show');
+// This route responds to GET requests at the '/users/{id}' URL, where {id} is a placeholder for the user's ID.
+// It calls the 'show' method of the UserController to display the user's details.
+// It is named 'users.show' for easy reference in the application.
+
+// Define a route for displaying the user edit form
+Route::get('/users/{id}/edit', [User Controller::class, 'edit'])->name('users.edit');
+// This route responds to GET requests at the '/users/{id}/edit' URL and calls the 'edit' method of the UserController.
+// It is named 'users.edit' for easy reference in the application.
+
+// Define a route for updating a specific user
+Route::put('/users/{id}', [User Controller::class, 'update'])->name('users.update');
+// This route responds to PUT requests at the '/users/{id}' URL and calls the 'update' method of the UserController.
+// It is named 'users.update' for easy reference in the application.
+
+// Define a route for deleting a specific user
+Route::delete('/users/{id}', [User Controller::class, 'destroy'])->name('users.destroy');
+// This route responds to DELETE requests at the '/users/{id}' URL and calls the 'destroy' method of the UserController.
+// It is named 'users.destroy' for easy reference in the application.
